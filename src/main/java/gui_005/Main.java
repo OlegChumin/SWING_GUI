@@ -1,4 +1,4 @@
-package gui_004;
+package gui_005;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +11,8 @@ public class Main {
 
         // Рассчитываем размер окна
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int) (screenSize.width * 0.3);
-        int height = (int) (screenSize.height * 0.3);
+        int width = (int) (screenSize.width * 0.326);
+        int height = (int) (screenSize.height * 0.255);
         int x = (screenSize.width - width) / 2;
         int y = (screenSize.height - height) / 2;
         frame.setBounds(x, y, width, height);
@@ -33,10 +33,13 @@ public class Main {
         JButton button13 = new JButton("Button 13");
         JButton button14 = new JButton("Button 14");
 
-// Создаем пустую панель-отступ для добавления между кнопками
-        Component horizontalStrut = Box.createHorizontalStrut(button7.getPreferredSize().width);
+        // Устанавливаем размеры кнопки button7
+        button7.setPreferredSize(new Dimension(87, 30));
 
-// Создаем панели
+        // Создаем пустую панель-отступ для добавления между кнопками
+        Component horizontalStrut = Box.createHorizontalStrut(button7.getWidth());
+
+        // Создаем панели
         JPanel panel1 = new JPanel();
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
         panel1.add(button1);
@@ -62,27 +65,8 @@ public class Main {
         panel2.add(button13);
         panel2.add(button14);
 
-        /**
-         BoxLayout - это менеджер компоновки, который располагает компоненты в одну строку или столбец, в зависимости
-         от заданной оси. Основное его свойство - это возможность выравнивания компонентов по оси, которое можно
-         настроить при создании.
-
-         BoxLayout используется для создания простых интерфейсов пользователя, когда нужно выравнивать компоненты по
-         горизонтали или вертикали.
-
-         При использовании BoxLayout все компоненты имеют одинаковый размер вдоль оси, по которой они располагаются,
-         кроме случаев, когда это противоречит установленному выравниванию. Также BoxLayout позволяет задавать
-         промежутки между компонентами, чтобы улучшить внешний вид интерфейса.
-
-         BoxLayout поддерживает следующие выравнивания:
-
-         CENTER - компоненты выравниваются по центру;
-         TOP - компоненты выравниваются по верхней границе;
-         BOTTOM - компоненты выравниваются по нижней границе;
-         LEFT - компоненты выравниваются по левой границе;
-         RIGHT - компоненты выравниваются по правой границе.
-         BoxLayout можно использовать в качестве менеджера компоновки для контейнеров JPanel, JWindow, JDialog и JFrame.
-         */
+// Сдвигаем горизонтальную панель кнопок на ширину кнопки Button7
+        panel1.setBorder(BorderFactory.createEmptyBorder(0, button7.getPreferredSize().width, 0, 0));
 
         // Добавляем панели в окно
         frame.add(panel1, BorderLayout.NORTH);
